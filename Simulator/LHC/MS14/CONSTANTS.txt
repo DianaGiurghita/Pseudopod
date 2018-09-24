@@ -1,0 +1,15 @@
+/home/staff1/aborowska/Cside/MS14/
+Environment: T1000c0.005x2E-5
+DURATION    = 100000.0
+TIMECONST   = 10.0
+NODE_NUM    = 1.2
+MMC         = 0.25665
+ACTIN_FK    = 0.0017211
+GI_SPEED    = 0.1332
+bB          = 0.0022559
+dB          = 0.019607
+diffB       = 0.082874
+sA          = 7.493E-5
+BASAL_A     = 0.19952
+dA          = 0.032877
+diffA       = 0.049706

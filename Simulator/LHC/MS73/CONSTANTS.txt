@@ -1,0 +1,15 @@
+/home/staff1/aborowska/Cside/MS73/
+Environment: T1000c0.005x2E-5
+DURATION    = 100000.0
+TIMECONST   = 10.0
+NODE_NUM    = 1.2
+MMC         = 0.14902
+ACTIN_FK    = 0.0025053
+GI_SPEED    = 0.12428
+bB          = 0.0035294
+dB          = 0.011373
+diffB       = 0.03211
+sA          = 4.7176E-5
+BASAL_A     = 0.055652
+dA          = 0.028777
+diffA       = 0.031877

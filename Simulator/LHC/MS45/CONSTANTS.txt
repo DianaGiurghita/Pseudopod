@@ -1,0 +1,15 @@
+/home/staff1/aborowska/Cside/MS45/
+Environment: T1000c0.005x2E-5
+DURATION    = 100000.0
+TIMECONST   = 10.0
+NODE_NUM    = 1.2
+MMC         = 0.082946
+ACTIN_FK    = 0.0011594
+GI_SPEED    = 0.08174
+bB          = 0.0053597
+dB          = 0.012373
+diffB       = 0.044693
+sA          = 6.9871E-5
+BASAL_A     = 0.12321
+dA          = 0.029878
+diffA       = 0.049461
