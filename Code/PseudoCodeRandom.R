@@ -70,6 +70,7 @@ for(k in 1:10) {
 
 
 
+##### PEAK ANALYSIS
 ##### Detecting number of maximum of LI and LA
 
 ## Plotting settings for restoring later

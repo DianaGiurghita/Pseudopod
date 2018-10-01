@@ -31,9 +31,9 @@ PseudoSim <- function( DirName, v = "false", Pars = c(0.0015, 0.07, 0.0028, 0.01
 
 PseudoRead <- function ( Path = "MS1", Output = "GI" )
 {
-    
+
     # CSV file name in the format: LHC/MSi/Cell1/cellOutput.csv  MSi indicated by path
-    fpath <- paste( "~/Desktop/Pseudopod/Simulator/LHC/", Path, "/Cell1/", sep="")
+    fpath <- paste( "~/ownCloud/Phd Diana/Cside 2018/Simulator/Init_LHS/", Path, "/Cell1/", sep="")
     fname <- paste( "cell", Output, ".csv", sep="")
     
     # For GI read in one column file
@@ -51,8 +51,12 @@ PseudoRead <- function ( Path = "MS1", Output = "GI" )
         
         # read in relevant csv file
         csvfile <- read.csv( paste( fpath, fname, sep=""), header = F, col.names = CN, fill = T )
+        
+        # transform into numeric matrix file from list/data frame
+        csvfile  <- matrix( unlist( csvfile,), ncol = dim( csvfile)[2] , byrow = FALSE)
         }
         
+    
     # return csv file
     return( csvfile)
 }
