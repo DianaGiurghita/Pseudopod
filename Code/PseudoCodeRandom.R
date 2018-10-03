@@ -166,6 +166,5 @@ for ( j in 1:100) {
 }
 
 
-
-## resotre plot settings
+## restore plot settings
 par( op)

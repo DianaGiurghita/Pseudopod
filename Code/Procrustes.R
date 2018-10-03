@@ -4,8 +4,7 @@
 ### Step 1: building matrices with the same dimensions in time (x,y - coord). 
 ### First check whether there is substantial loss of information from scaling down - the obvious method.
 
-
-
+## Plots for every theta that compare the scaled down version of x,y time serie with original one
 for (j in 1:100) {
 
     # Define paths where cell theta j is located
@@ -117,3 +116,53 @@ for (j in 1:100) {
         
     dev.off()
 }
+
+### Step 2: apply Procrustes analysis 
+
+library( shapes)
+# demo(shapes)
+
+
+# Cell 1
+
+j <- 1
+res <- thinXY(j=j)
+
+X <- res$X
+Y <- res$Y
+
+
+# Rearrange data in an array of size: 79 x 2 x 1000 (i.e.: nodes x dimensions x cell_at_timepoint)
+
+cell1 <- array (data = NA, dim = c( ncol(X), 2, 1000  ))
+
+for (i in 1:1000){
+    cell1[ , 1, i] <- X[i, ]
+    cell1[ , 2, i] <- Y[i, ] }
+
+
+# Procrustes analysis WITH scaling
+proc_cell1 <- procGPA(cell1)
+
+
+# Procrustes analysis WITHOUT scaling
+proc_cell1_ns <- procGPA(cell1, scale = FALSE)
+
+
+# Plotting
+# Open pdf file to write plot in 
+pdf( paste("Theta", j, "_thin.pdf", sep=""), width = 7, height = 7)
+
+par(mfrow = c(2,1))
+
+plotshapes( proc_cell1$rotated[,, Ktimes], joinline=c(1:79, 1), symbol = 20, color = alpha( "blue", 0.7))
+            
+mtext( paste("Theta" , j, ": Procrustes analysis with scaling", sep="") )
+
+
+plotshapes( proc_cell1_ns$rotated[,, Ktimes], joinline=c(1:79, 1), symbol = 20, color = alpha( "red", 0.7))
+
+mtext( paste("Theta" , j, ": Procrustes analysis without scaling", sep="") )
+dev.off()
+
+

@@ -60,3 +60,43 @@ PseudoRead <- function ( Path = "MS1", Output = "GI" )
     # return csv file
     return( csvfile)
 }
+
+
+
+# Function that returns thinned output for x and y series, given argument j indicating which theta file to read 
+thinXY <- function( j )
+{
+    # Define paths where cell theta j is located
+    path <- paste("MS", j, sep="")  
+    fpath <- paste("~/ownCloud/Phd Diana/Cside 2018/Simulator/Init_LHS/", path, "/Cell1/cellX.csv", sep="")
+    
+    
+    # Get minimum number of nodes for cell theta j from the csv file 
+    minlen <- min( count.fields( fpath, sep = ","))
+    
+    # Read in x and y coords for theta js
+    X <- PseudoRead( Path = path, Output = "X" )
+    Y <- PseudoRead( Path = path, Output = "Y" )
+    
+    # Define thinned matrices for x and y
+    thinX <- matrix(nrow= 1000, ncol=minlen)
+    thinY <- matrix(nrow= 1000, ncol=minlen)
+    
+    for (k in 1:1000)
+    {
+        # Get number of nodes for each timepoint Ktimes[k]
+        timelen <- length( na.omit( X[k,] ))
+        
+        # Index of equally spaced positions of length = minlen
+        ind <- round( seq( 1, timelen, len = minlen))
+        
+        # Add thinned rows to thinX and thinY matrices
+        thinX[k, ] <- rbind( X[k, ind]) 
+        thinY[k, ] <- rbind( Y[k, ind]) 
+    }
+    
+    return( list ('X'= thinX, 'Y'=thinY))
+    
+}
+
+
